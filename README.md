@@ -9,6 +9,7 @@ Sistema para competição de trekking usando notebook + ESP32.
 
 ## Estrutura inicial
 
+``` bash
 trekking-ai/
 │
 ├── src/
@@ -23,3 +24,4 @@ trekking-ai/
 ├── tests/
 ├── requirements.txt
 └── README.md
+``
