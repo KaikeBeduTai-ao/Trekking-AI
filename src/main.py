@@ -24,7 +24,8 @@ def main():
             cv2.imshow("Camera", frame)
             cv2.waitKey(1)
 
-        window.update()
+        cones = [(200, 200), (300, 300)]
+        window.update(cones)
         clock.tick(60)  # 60 FPS
 
     pygame.quit()
