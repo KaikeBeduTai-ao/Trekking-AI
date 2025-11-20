@@ -43,9 +43,10 @@ class ESP32Comm:
 
         return None
 
-    def send(self, data):
-        if not self.ser:
-            return
-
-        msg = str(data) + "\n"
-        self.ser.write(msg.encode())
+    def send(self, command):
+        if self.ser:
+            try:
+                msg = str(command) + "\n"
+                self.ser.write(msg.encode())
+            except Exception as e:
+                print(f"[HARDWARE] Erro de envio: {e}")
