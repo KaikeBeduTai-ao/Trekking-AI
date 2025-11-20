@@ -55,3 +55,56 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+## Configuração do Hardware (Firmware)
+
+O código C++ para o ESP32 está localizado na pasta `firmware/`. Você precisará da Arduino IDE configurada para ESP32.
+**Estrutura:**
+
+* `firmware/esp32_robot/`: Código oficial para controle dos motores.
+
+* `firmware/tests/`: Códigos para teste de LED e comunicação.
+
+**Como carregar:**
+1. Conecte o ESP32 ao computador via USB.
+2. Abra o arquivo `firmware/esp32_robot/esp32_robot.ino` na Arduino IDE.
+3. Verifique as definições dos pinos no início do arquivo (`IN1`, `IN2`, etc.) e ajuste conforme sua montagem.
+4. Selecione a placa e a porta correta e clique em **Upload**.
+
+   **Atenção**: Certifique-se de fechar o "Serial Monitor" da Arduino IDE antes de rodar o script Python, caso contrário a porta USB estará ocupada.
+
+
+## Como Usar
+
+Com o ESP32 conectado e o ambiente Python configurado.
+1. **Execute o programa principal:**
+```bash
+python src/main.py
+```
+2. **O Sistema irá abrir duas janelas:**
+   * **Visão Computacional (OpenCV)**: Mostra a imagem da câmera.
+   * **Radar (Pygame)**: Mostra a representação gráfica das zonas e do objeto.
+3. **Iniciando o Rastreamento:**
+   * Aponte a câmera para o objeto que deseja seguir (ex: um cone).
+   * Clique na janela da Câmera para focar.
+   * Pressione a tecla `s`. A imagem irá congelar.
+   * Com o mouse, desenhe um retângulo ao redor do objeto.
+   * Pressione `ENTER` para confirmar.
+4. **Operação:**
+   * O robô começará a enviar comandos (`frente`, `esquerda`, `direita`) para o ESP32 automaticamente baseando-se na posição do objeto na tela.
+5. **Parar:**
+   * Pressione `ESC` para encerrar o programa e parar o robô.
+
+## Estrutura do Projeto
+```bash
+trekking-ai/
+├── firmware/           # Código C++ (Arduino/ESP32)
+├── src/                # Código Fonte Python
+│   ├── hardware/       # Driver de comunicação Serial
+│   ├── navigation/     # Lógica de decisão de movimento
+│   ├── ui/             # Interface gráfica (Pygame)
+│   ├── utils/          # Constantes e configuracões
+│   ├── vision/         # Algoritmos de Rastreamento (OpenCV)
+│   └── main.py         # Arquivo principal
+└── README.md           # Documentação
+``
