@@ -26,27 +26,37 @@ class ESP32Comm:
         ports = serial.tools.list_ports.comports()
 
         for p in ports:
-            name = p.device.lower()
             desc = p.description.lower()
+            hwid = p.hwid.lower()
+            name = p.device.lower()
 
-            # Windows: COM3, COM4...
-            if "usb" in desc or "uart" in desc or "cp210" in desc or "ch340" in desc:
+            print("Encontrado:", p.device, "|", p.description)
+
+            # Casos mais comuns
+            if "esp" in desc or "esp" in hwid:
                 return p.device
 
-            # Linux: /dev/ttyUSB0 ou /dev/ttyACM0
+            if "cp210" in desc or "cp210" in hwid:
+                return p.device
+
+            if "ch340" in desc or "ch910" in desc:
+                return p.device
+
             if "ttyusb" in name or "ttyacm" in name:
                 return p.device
 
-            # MacOS: /dev/cu.usbserial, /dev/cu.usbmodem
-            if "cu.usb" in name:
+            if "usb serial" in desc:
                 return p.device
 
         return None
 
     def send(self, command):
+        # print('Tentou enviar')
+        # print(f'ser: {self.ser}')
         if self.ser:
             try:
                 msg = str(command) + "\n"
+                print(f"[HARDWARE] Envio: {msg}")
                 self.ser.write(msg.encode())
             except Exception as e:
                 print(f"[HARDWARE] Erro de envio: {e}")

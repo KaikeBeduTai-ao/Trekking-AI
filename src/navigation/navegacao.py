@@ -184,6 +184,7 @@ while True:
     if comando_atual != ultimo_comando:
         if usa_serial and esp:
             esp.send(comando_atual)
+            print(f'Comando enviado: {comando_atual}')
         ultimo_comando = comando_atual
 
     cv2.imshow("Navegacao", frame)
