@@ -56,6 +56,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+⚠️ Solução de Problemas (Troubleshooting)
+**Erro no Windows: "Running scripts is disabled on this system"**
+Se ao tentar ativar o ambiente virtual (`venv`) você receber um erro em vermelho dizendo que a execução de scripts foi desabilitada:
+
+1. Abra o PowerShell e execute o comando abaixo para liberar permissões para seu usuário:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+2. Tente ativar o venv novamente:
+```powershell
+.\venv\Scripts\activate
+```
+
 ## Configuração do Hardware (Firmware)
 
 O código C++ para o ESP32 está localizado na pasta `firmware/`. Você precisará da Arduino IDE configurada para ESP32.
@@ -107,4 +120,4 @@ trekking-ai/
 │   ├── vision/         # Algoritmos de Rastreamento (OpenCV)
 │   └── main.py         # Arquivo principal
 └── README.md           # Documentação
-``
+```
