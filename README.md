@@ -60,18 +60,30 @@ pip install -r requirements.txt
 
 ## ⚠️ Solução de Problemas (Troubleshooting)
 
-**Erro no Windows: "Running scripts is disabled on this system"**
+### 1. **Erro: "Metadata generation failed" ou "Unknown compiler"**
+    
+  **Sintoma**: Ao rodar o `pip install`, aparece um erro vermelho gigante mencionando falha na construção do **NumPy** ou **Meson build system**. 
+          
+  **Causa**: Você está usando uma versão muito recente do Python (ex: 3.14) que não possui binários pré-compilados para as bibliotecas. O Windows tenta compilar manualmente e falha. Solução:
+  
+  1. Desinstale o Python atual ou instale o Python 3.12.8.
+          
+  2. Apague a pasta `venv` antiga.
+          
+  3. Recrie o ambiente forçando a versão correta: `py -3.12 -m venv venv`.
 
-Se ao tentar ativar o ambiente virtual (`venv`) você receber um erro em vermelho dizendo que a execução de scripts foi desabilitada:
+### 2. **Erro no Windows: "Running scripts is disabled on this system"**
 
-1. Abra o PowerShell e execute o comando abaixo para liberar permissões para seu usuário:
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-2. Tente ativar o venv novamente:
-```powershell
-.\venv\Scripts\activate
-```
+  Se ao tentar ativar o ambiente virtual (`venv`) você receber um erro em vermelho dizendo que a execução de scripts foi desabilitada:
+
+  1. Abra o PowerShell e execute o comando abaixo para liberar permissões para seu usuário:
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+  2. Tente ativar o venv novamente:
+  ```powershell
+  .\venv\Scripts\activate
+  ```
 
 ---
 
