@@ -37,7 +37,7 @@ Antes de começar, certifique-se de ter o **Python 3.x** instalado. As principai
 1. **Clone o repositório:**
 
 ```bash
-git clone [https://github.com/seu-usuario/trekking-ai.git](https://github.com/seu-usuario/trekking-ai.git)
+git clone https://github.com/KaikeBeduTai-ao/Trekking-AI.git
 cd trekking-ai
 ```
 
