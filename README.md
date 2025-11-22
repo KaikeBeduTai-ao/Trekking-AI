@@ -56,8 +56,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-⚠️ Solução de Problemas (Troubleshooting)
+---
+
+## ⚠️ Solução de Problemas (Troubleshooting)
+
 **Erro no Windows: "Running scripts is disabled on this system"**
+
 Se ao tentar ativar o ambiente virtual (`venv`) você receber um erro em vermelho dizendo que a execução de scripts foi desabilitada:
 
 1. Abra o PowerShell e execute o comando abaixo para liberar permissões para seu usuário:
@@ -68,6 +72,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```powershell
 .\venv\Scripts\activate
 ```
+
+---
 
 ## Configuração do Hardware (Firmware)
 
